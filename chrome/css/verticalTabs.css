@@ -1,0 +1,368 @@
+@media -moz-pref("sidebar.revamp") {
+  #sidebar {
+    box-shadow: none !important;
+    background-color: var(--button-bgcolor) !important;
+  }
+
+  #sidebar-main {
+    -moz-window-dragging: drag;
+  }
+
+  #sidebar-box {
+    -moz-window-dragging: no-drag;
+    max-width: 280px !important;
+    min-width: 280px !important;
+    &[sidebarcommand="viewGenaiChatSidebar"] {
+      max-width: 400px !important;
+      min-width: 400px !important;
+    }
+  }
+
+  .sidebar-splitter {
+    cursor: default !important;
+  }
+
+  .actions-list,
+  .tools-and-extensions {
+    -moz-window-dragging: no-drag;
+    &:-moz-window-inactive {
+      opacity: .5 !important;
+    }
+  }
+
+  span > img:is([src="chrome://browser/skin/history.svg"], [src="chrome://browser/skin/synced-tabs.svg"], [src="chrome://browser/skin/bookmark-hollow.svg"], [src="chrome://global/skin/icons/settings.svg"], [src="chrome://global/skin/icons/highlights.svg"], [src="chrome://browser/skin/login.svg"], [src="chrome://browser/content/genai/assets/brands/chatgpt.svg"]) {
+    fill: light-dark(#525252, #c9c9cb) !important;
+  }
+
+  span:active > img:is([src="chrome://browser/skin/history.svg"], [src="chrome://browser/skin/synced-tabs.svg"], [src="chrome://browser/skin/bookmark-hollow.svg"], [src="chrome://global/skin/icons/settings.svg"], [src="chrome://global/skin/icons/highlights.svg"], [src="chrome://browser/skin/login.svg"], [src="chrome://browser/content/genai/assets/brands/chatgpt.svg"]) {
+    fill: light-dark(#2d2d2d, #ececec) !important;
+  }
+}
+
+@media -moz-pref("sidebar.verticalTabs") {
+  @media not (-moz-platform: linux) {
+    .titlebar-buttonbox-container {
+      margin-top: -2px !important;
+    }
+  }
+
+  .tools-and-extensions {
+    margin-bottom: 4px !important;
+  }
+
+  .extensions, .customize-extensions-heading {
+    display: none !important;
+  }
+
+  .actions-list > moz-button[view=viewCustomizeSidebar] {
+    display: var(--mtb) !important;
+  }
+
+  .actions-list {
+    display: var(--dp, inherit) !important;
+    &:has(.expanded-button) {
+      display: flex !important;
+    }
+    &[orientation="horizontal"] {
+      justify-content: center !important;
+      max-width: calc(100% - 20px) !important;
+    }
+  }
+
+  .buttons-wrapper {
+    justify-content: center !important;
+  }
+
+  .more-tools-button,
+  .tools-and-extensions > moz-button[extension] {
+    display: var(--mtb) !important;
+  }
+
+  #sidebar-tools-and-extensions-splitter {
+    display: var(--dp) !important;
+    width: 10px !important;
+    margin-inline: auto !important;
+    margin-block-start: 15px !important;
+    border-top: none !important;
+    border-color: transparent !important;
+    background-color: transparent !important;
+    .wrapper:hover &:not(:has(~ .actions-list:hover)) {
+      background-color: var(--panel-separator-color) !important;
+      opacity: .5;
+      transition: .25s !important;
+      -moz-window-dragging: no-drag;
+      &:hover {
+        background-color: var(--outline-color) !important;
+        width: calc(100% - 25px) !important;
+        opacity: 1;
+        transition: .25s !important;
+      }
+    }
+  }
+
+  #vertical-tabs-newtab-button {
+    margin-bottom: 6px !important;
+  }
+
+  #vertical-pinned-tabs-splitter {
+    margin-block-start: 4px !important;
+    width: 10px !important;
+    margin-inline: auto !important;
+    border-top-color: transparent !important;
+    #vertical-tabs:hover & {
+      background-color: var(--panel-separator-color) !important;
+      opacity: .5;
+      transition: .25s !important;
+      -moz-window-dragging: no-drag;
+      &:hover {
+        background-color: var(--outline-color) !important;
+        width: calc(100% - 25px) !important;
+        opacity: 1;
+        transition: .25s !important;
+      }
+    }
+  }
+
+  .tab-background {
+    border-radius: 8px !important;
+  }
+
+  .tabbrowser-tab:not([selected], [pinned], :hover) .tab-background {
+    background: transparent !important;
+  }
+
+  .tabbrowser-tab[usercontextid] > .tab-stack > .tab-background > .tab-context-line {
+    margin: 6px 0 6px 0 !important;
+  }
+
+  .tab-group-label {
+    display: flex !important;
+    align-items: center;
+    font-weight: normal !important;
+    font-size: 13px !important;
+    color: light-dark(var(--tab-group-color), var(--tab-group-color-invert)) !important;
+    opacity: .9;
+    outline: none !important;
+    min-height: var(--tab-min-height) !important;
+    margin-block: 0 !important;
+    padding-block: 0 !important;
+    margin-left: 1px !important;
+    margin-right: 10px !important;
+    padding-left: 33px !important;
+    border-radius: 8px !important;
+    width: 100% !important;
+    background-color: color-mix(in srgb, light-dark(var(--tab-group-color), var(--tab-group-color-invert)) 30%, transparent) !important;
+    background-image: url("chrome://global/skin/icons/arrow-down-12.svg");
+    background-repeat: no-repeat;
+    background-position: left 9px bottom 11px;
+    -moz-context-properties: fill;
+    fill: currentColor;
+
+    tab-group[collapsed] > .tab-group-label-container & {
+      background-image: url("chrome://global/skin/icons/folder.svg");
+      background-position: left 9px bottom 7.5px;
+    }
+
+    &::first-letter {
+      font: unset !important;
+    }
+  }
+
+  .tab-group-line {
+    background-color: color-mix(in srgb, light-dark(var(--tab-group-color), var(--tab-group-color-invert)) 60%, transparent) !important;
+
+    #tabbrowser-tabs & {
+      width: 1.5px !important;
+
+      .tabbrowser-tab:first-of-type > .tab-stack > .tab-background > & {
+        inset-block-start: 2px !important;
+      }
+
+      .tabbrowser-tab:last-of-type > .tab-stack > .tab-background > & {
+        inset-block-end: 2px !important;
+      }
+    }
+  }
+
+  .tab-group-label-container {
+    #tabbrowser-tabs & {
+      margin-block-start: 4px !important;
+      margin-block-end: 4px !important;
+      tab-group:not([collapsed]) > & {
+        padding-block-end: 0 !important;
+      }
+    }
+
+    #tabbrowser-tabs tab-group:not([collapsed]) > &::after {
+      width: 0 !important;
+    }
+  }
+
+  #tabbrowser-tabs {
+    tab-group > .tabbrowser-tab,
+    &[movingtab][movingtab-addToGroup]:not([movingtab-createGroup],[movingtab-ungroup]) .tabbrowser-tab:is(:active,[multiselected]) {
+      margin-inline-start: 0 !important;
+    }
+  }
+
+  #tabs-newtab-button,
+  #vertical-tabs-newtab-button {
+    font-size: 13px !important;
+  }
+
+  #urlbar {
+    backdrop-filter: blur(0px) !important;
+  }
+
+  #urlbar[breakout][breakout-extend] {
+    left: 34vw !important;
+    min-height: 50px !important;
+    border-radius: 8px !important;
+    backdrop-filter: blur(30px) !important;
+    @media (-moz-platform: linux) {
+      @media not -moz-pref("gwfox.bms") {
+      backdrop-filter: blur(0px) !important;
+    }
+    }
+  }
+
+  :has(#urlbar[usertyping]:not([persistsearchterms])) {
+    #urlbar {
+      left: 34vw !important;
+      backdrop-filter: blur(30px) !important;
+      border-radius: 8px !important;
+      min-height: 50px !important;
+      @media (-moz-platform: linux) {
+        @media not -moz-pref("gwfox.bms") {
+        backdrop-filter: blur(0px) !important;
+      }
+      }
+    }
+  }
+
+  :has(#tabbrowser-tabs[expanded]) {
+    --mtb: none;
+    --dp: flex;
+
+    #sidebar-main {
+      min-width: 221px !important;
+    }
+  }
+
+  :has(#tabbrowser-tabs:not([expanded])) {
+    .tab-group-line {
+      #tabbrowser-tabs & {
+        inset-inline: 0 !important;
+        @media (-moz-platform: windows) {
+          margin-inline-start: -.5px !important;
+        }
+
+        .tabbrowser-tab:first-of-type > .tab-stack > .tab-background > & {
+          inset-block-start: 2px !important;
+        }
+
+        .tabbrowser-tab:last-of-type > .tab-stack > .tab-background > & {
+          inset-block-end: 2px !important;
+        }
+      }
+    }
+
+    .tab-group-label {
+      font-size: 0 !important;
+      margin-left: 10px !important;
+      padding: 0 !important;
+      width: 32px !important;
+      min-height: 32px !important;
+      max-width: 32px !important;
+      background-position: center;
+    }
+
+    .tab-close-button {
+      background-image: none !important;
+      box-shadow: none !important;
+      top: 0 !important;
+      inset-inline-start: 7px !important;
+      @media (-moz-platform: windows) {
+        inset-inline-start: 8px !important;
+      }
+      @media (-moz-platform: linux) {
+        inset-inline-start: 10px !important;
+      }
+    }
+
+    #urlbar[breakout][breakout-extend] {
+      left: 29vw !important;
+    }
+
+    :has(#urlbar[usertyping]:not([persistsearchterms])) {
+      #urlbar {
+        left: 29vw !important;
+      }
+    }
+  }
+
+  :has(#sidebar-main[hidden]) {
+    #sidebar-box {
+      margin-left: 2px !important;
+      margin-right: -6px !important;
+      margin-bottom: 2px !important;
+    }
+  }
+
+  @media not -moz-pref("gwfox.plus") {
+  @media -moz-pref("sidebar.visibility", "expand-on-hover") {
+    tab-group {
+      .tab-group-label {
+        background-position: left 10px bottom 10px;
+        tab-group[collapsed] > .tab-group-label-container & {
+          background-position: left 8px bottom 8px;
+        }
+      }
+    }
+  }
+}
+
+  @media (-moz-platform: linux) {
+    #tabbrowser-tabs:not([expanded]) .tab-group-label {
+      margin-left: 13px !important;
+    }
+  }
+
+  @media (-moz-platform: windows) {
+    :has(#tabbrowser-tabs[expanded]) {
+      tab > stack {
+        margin: 0 .5px !important;
+      }
+    }
+
+    .tab-group-label {
+      margin-left: .5px !important;
+    }
+  }
+
+  @media -moz-pref("sidebar.visibility", "expand-on-hover") {
+    :has(#tabbrowser-tabs[expanded], #tabbrowser-tabs:not([expanded])) {
+      #urlbar[breakout][breakout-extend] {
+        left: 29vw !important;
+      }
+
+      :has(#urlbar[usertyping]:not([persistsearchterms])) {
+        #urlbar {
+          left: 29vw !important;
+        }
+      }
+    }
+  }
+
+  :has(#sidebar-main[hidden]) {
+    #urlbar[breakout][breakout-extend] {
+      left: 27.5vw !important;
+    }
+
+    :has(#urlbar[usertyping]:not([persistsearchterms])) {
+      #urlbar {
+        left: 27.5vw !important;
+      }
+    }
+  }
+}
