@@ -299,6 +299,14 @@ findbar {
   white-space: nowrap;
   animation-name: slide-in;
   animation-duration: 350ms;
+  @media (-moz-platform: macos) {
+    pointer-events: none;
+    .findbar-closebutton,
+    .findbar-container{
+      pointer-events: auto;
+    }
+  }
+
   &:is([hidden]) {
     animation-name: slide-out;
   }
