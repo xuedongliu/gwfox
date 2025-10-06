@@ -227,67 +227,6 @@
   }
 }
 
-/*@media not -moz-pref( "sidebar.verticalTabs") {
-  .titlebar-buttonbox-container {
-    position: fixed !important;
-    left: 7px;
-    top: 15.5px;
-  }
-
-  .titlebar-spacer, #nav-bar:not([customizing]) toolbarspring {
-    display: none !important;
-  }
-
-  #navigator-toolbox {
-    display: grid;
-    grid-template-columns: minmax(auto, 0) auto;
-  }
-
-  #nav-bar {
-    width: fit-content !important;
-    grid-area: 2 / 1 / auto / auto;
-    padding-left: 76px !important;
-  }
-
-  #urlbar-container {
-    max-width: 219px !important;
-  }
-
-  #TabsToolbar {
-    grid-area: 2 / 2 / auto / auto;
-    padding-inline-end: 77px !important;
-    margin-bottom: 5.5px !important;
-
-    :has(#nav-bar-overflow-button:not(#nav-bar:not([overflowing], [nonemptyoverflow], [customizing]) > #nav-bar-overflow-button)) & {
-      padding-inline-end: 111px !important;
-    }
-  }
-
-  #navigator-toolbox > *:not(#TabsToolbar, #nav-bar) {
-    grid-column: 1 / span 2 !important;
-  }
-
-  #PanelUI-menu-button {
-    position: fixed;
-    inset-inline-end: 3px;
-  }
-
-  #nav-bar-overflow-button {
-    position: fixed;
-    inset-inline-end: 43px;
-  }
-
-  #unified-extensions-button {
-    position: fixed;
-    display: flex !important;
-    inset-inline-end: 43px;
-
-    :has(#nav-bar-overflow-button:not(#nav-bar:not([overflowing], [nonemptyoverflow], [customizing]) > #nav-bar-overflow-button)) & {
-      inset-inline-end: 77px;
-    }
-  }
-}*/
-
 @media not -moz-pref("sidebar.verticalTabs") {
 .titlebar-buttonbox-container {
   position: fixed !important;
@@ -317,12 +256,12 @@
 
 #navigator-toolbox {
   display: grid;
-  grid-template-columns: minmax(auto, 0) auto;
+  grid-template-columns: minmax(auto, 0) auto auto;
 }
 
 #nav-bar {
-  width: fit-content !important;
-  grid-area: 2 / 1 / auto / auto;
+  /*width: fit-content !important;*/
+  grid-area: 2 / 2 / auto / auto;
   padding-left: 76px !important;
   @media not (-moz-platform: macos) {
     @media (not -moz-pref("gwfox.plus")) or -moz-pref("gwfox.plus_sc") {
@@ -332,11 +271,11 @@
 }
 
 #urlbar-container {
-  max-width: 219px !important;
+  /*max-width: 350px !important;*/
 }
 
 #TabsToolbar {
-  grid-area: 2 / 2 / auto / auto;
+  grid-area: 2 / span 3 / auto / auto;
   padding-inline-end: 77px !important;
   margin-bottom: 5.5px !important;
   @media not (-moz-platform: macos) {
@@ -362,7 +301,7 @@
 }
 
 #navigator-toolbox > *:not(#TabsToolbar, #nav-bar) {
-  grid-column: 1 / span 2 !important;
+  grid-column: 1 / span 5 !important;
 }
 
 #PanelUI-menu-button {
