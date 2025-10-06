@@ -356,6 +356,7 @@
 }
 
 .urlbar-page-action {
+  width: var(--urlbar-min-height) !important;
   height: 28px !important;
   border-radius: 6px !important;
   padding: 6px !important;
